@@ -1,0 +1,60 @@
+@use '@carbon/colors';
+@use '@carbon/layout';
+
+.container {
+    padding: layout.$spacing-04 0;
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: default !important;
+    color: black;
+}
+
+.menu__container {
+    width: 24px;
+    height: 24px;
+}
+
+.user__container {
+    padding-bottom: layout.$spacing-03 !important;
+}
+
+.user__inner__container {
+    display: flex;
+    align-items: center;
+}
+
+.user__name {
+    line-height: normal;
+    font-size: 1.25rem;
+    color: colors.$black;
+}
+
+.user__label {
+    font-size: 0.875rem;
+    color: colors.$gray-60;
+}
+
+.user__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin-right: layout.$spacing-04;
+}
+
+.logout {
+    font-size: 1rem !important;
+
+    width: calc(100% - (layout.$spacing-03 * 2)) !important;
+    position: absolute !important;
+    bottom: 0;
+    right: 0 !important;
+
+    margin: layout.$spacing-03 !important;
+}

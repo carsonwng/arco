@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+import { ArcoHeader } from "./components/header/header"
+
+import styles from './app.module.scss'
+import { Router } from "./router";
+import { useDiscordStore } from "./store/discordStore";
+
+const App = () => {
+  const user = useDiscordStore()
+  
+  useEffect(() => {
+    if (!user.loggedIn) return
+    if (new Date(user.user.expires_at) <= new Date()) return user.clear()
+  }, [])
+
+  return (<>
+    <ArcoHeader />
+
+    <Router />
+    </>
   );
 }
 

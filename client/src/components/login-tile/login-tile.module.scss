@@ -1,0 +1,30 @@
+@use '@carbon/colors';
+@use '@carbon/layout';
+
+.container {
+    margin: 8px;
+}
+
+.label {
+    color: colors.$gray-60;
+    margin-bottom: layout.$spacing-01;
+}
+
+.title {
+    font-size: 1.5rem;
+}
+
+.description {
+    margin: layout.$spacing-07 0;
+}
+
+.icon__container {
+    display: flex;
+    align-items: center;
+}
+
+.icon__label {
+    font-size: 1.25rem;
+    margin-right: layout.$spacing-03;
+}
+

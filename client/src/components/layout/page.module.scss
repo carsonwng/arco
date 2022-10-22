@@ -1,0 +1,11 @@
+@use '@carbon/layout';
+
+.container {
+    padding: layout.$spacing-12;
+    width: 100%;
+}
+
+.title {
+    font-size: 5.75rem;
+    font-weight: bolder;
+}
