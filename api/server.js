@@ -1,14 +1,18 @@
+require("dotenv").config()
+const { getDb, connect } = require("./helpers/mongodb")
+const subscriptionsRouter = require('./routes/subscriptions')
+
 const express = require('express')
 const app = express()
 const port = 3001
 
-const subscriptionsRouter = require('./routes/subscriptions')
-app.use("/subscriptions", subscriptionsRouter)
+connect(() => {
+    app.use("/subscriptions", subscriptionsRouter)
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
+    app.get('*', (req, res) => {
+        res.sendStatus(404)
+    })
+    
+    app.listen(port)
 })
 
-app.listen(port, () => {
-    console.log('Running on port 3001')
-})
