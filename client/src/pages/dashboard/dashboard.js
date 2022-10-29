@@ -16,7 +16,9 @@ export const Dashboard = () => {
                 Manage your
                 <br />
                 Subscriptions.
-            </Title>           
+            </Title>
+
+            
 
         </Page>
     )

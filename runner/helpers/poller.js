@@ -31,8 +31,10 @@ class Poll extends EventEmitter {
                     this.emit("block", response.data[this.path])
                 }
             } catch (err) {
-                console.error("Error fetching head:", err)
-                this.emit("error", err)
+                console.log("Error fetching head:", err)
+                
+                await new Promise(resolve => setTimeout(resolve, this.interval))
+                this.start()
             }
         }, this.interval)
     }
