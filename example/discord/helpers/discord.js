@@ -1,5 +1,5 @@
 const { Client, Events, GatewayIntentBits, EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js')
-const { shortenString } = require('../helpers/sanitize')
+const { shortenString } = require('../../../runner/helpers/sanitize')
 
 const client = new Client({
     intents: [

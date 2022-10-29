@@ -9,7 +9,7 @@ module.exports = {
         try {
             client = new MongoClient(uri)
 
-            arcoDb = client.db("arco").collection("subscriptions")
+            arcoDb = client.db("arco").collection("discord")
     
             return cb()    
         } catch (err) {

@@ -1,8 +1,6 @@
 const express = require('express')
 const router = express.Router()
 
-// Path: api\routes\subscriptions.js
-
 const arco = require("../helpers/mongodb")
 let arcoDb;
 
@@ -16,14 +14,12 @@ router.route('/')
         res.sendStatus(405)
     })
     .post((req, res) => {
-        // res.status(200).send('POST request to subscriptions')
-
         const sample = {
             version: 1,
             type: 1,
             trigger: {
-                network: "algo",
-                condition_type: "address", // block, tx, price, address, contract
+                network: "algorand",
+                condition_type: "address",
                 condition_target: "0xaddr",
                 condition: {}
             },
