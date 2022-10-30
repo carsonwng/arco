@@ -59,14 +59,12 @@ connect(() => {
 
             console.log("sending webhook", trigger.webhook)
 
-            try {
-              axios.post(trigger.webhook, {
-                tx: tx,
-                trigger: trigger
-              })  
-            } catch (err) {
+            await axios.post(trigger.webhook, {
+              tx: tx,
+              trigger: trigger
+            }).catch((err) => {
               console.log(err)
-            }
+            })
           })
 
           i++
