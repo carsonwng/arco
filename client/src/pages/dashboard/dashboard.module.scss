@@ -7,3 +7,19 @@
         font-size: 1.5rem !important;
     }
 }
+
+.tile__container {
+    margin-top: layout.$spacing-10;
+    // width: 500px;
+    display: flex;
+    width: 100%;
+}
+
+.tile {
+    width: 500px;
+}
+
+.tile__title {
+    font-size: 1.5rem;
+    color: black;
+}

@@ -65,5 +65,9 @@ module.exports = {
         return await client.users.send(id, content).catch((err) => {
             console.log(err)
         })
+    },
+
+    getClient: () => {
+        return client
     }
 }

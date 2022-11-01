@@ -1,0 +1,6 @@
+@use '@carbon/layout';
+
+.tile__container {
+    margin-top: layout.$spacing-10;
+    width: 500px;
+}

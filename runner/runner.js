@@ -46,7 +46,15 @@ connect(() => {
               "trigger.condition_target": {
                 $in: targets
               },
-              "paused": false
+              '$or': [
+                {
+                  'paused': false
+                }, {
+                  'paused': {
+                    '$exists': false
+                  }
+                }
+              ]
             }
           )
 

@@ -1,0 +1,9 @@
+@use '@carbon/layout';
+
+.breadcrumb {
+    margin-bottom: layout.$spacing-04;
+
+    * {
+        font-size: 1.5rem !important;
+    }
+}

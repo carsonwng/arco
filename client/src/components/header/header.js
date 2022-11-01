@@ -71,7 +71,7 @@ export const ArcoHeader = () => {
                             label="Take a Visit to your"
                             title="Dashboard"
                             description="Manage subscriptions, triggers, and more."
-                            buttonLabel="Go Manage Things"
+                            buttonLabel="Start Managing"
                             href={`/dashboard`}
                             icon
                         />
@@ -82,7 +82,7 @@ export const ArcoHeader = () => {
                             label="Learn more about"
                             title="This Project"
                             description="Everything about arco. Why, how, and more."
-                            buttonLabel="Learn Cool Stuff"
+                            buttonLabel="Learn More"
                             href={`#`}
                             icon
                         />

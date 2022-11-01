@@ -12,11 +12,13 @@ export const HeaderTile = ({
     description = "",
     buttonLabel = "",
     href = "",
-    icon = true
+    icon = true,
+    className = "",
 }) => {
     return (
         <motion.div
-            className={styles.container}
+            className={className}
+            style={{ margin: "8px" }}
             whileHover="hover"
         >
             <ClickableTile href={href}>

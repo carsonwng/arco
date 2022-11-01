@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useHref, useLocation, useSearchParams } from "react-router-dom"
+import { Navigate, useHref, useLocation, useSearchParams } from "react-router-dom"
 import axios from "axios"
 import { useDiscordStore } from "../../store/discordStore"
 import { ProgressBar, ProgressIndicator, ProgressStep } from "@carbon/react"
@@ -81,6 +81,10 @@ export const Login = () => {
 
     return (
         <Page>
+            {completed && (
+                <Navigate to="/dashboard" replace/>
+            )}
+
             <Title>
                 {!errored && !completed && (
                     <>
@@ -104,7 +108,7 @@ export const Login = () => {
 
                 {completed && (
                     <>
-                        Success :)
+                        Success!
                         <br />
                         Bringing You
                         <br />

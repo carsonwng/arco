@@ -1,0 +1,17 @@
+.form__container {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.label, select, .input {
+    font-size: 32px !important;
+}
+
+select {
+    width: fit-content !important;
+}
+
+.input {
+    width: 30% !important;
+}
