@@ -1,4 +1,5 @@
 const express = require('express')
+const { ObjectId } = require('mongodb')
 const router = express.Router()
 
 const arco = require("../helpers/mongodb")
@@ -13,11 +14,11 @@ router.use((req, res, next) => {
 
 router.route('/')
     .get(async (req, res) => {
-        if (!req.query.webhook) return res.status(400).send("Invalid Webhook href")
+        if (!req.query.webhook_id) return res.status(400).send("Invalid Webhook href")
 
         try {
             const subscriptions = await arcoDb.collection("subscriptions").find({
-                "webhook": req.query.webhook
+                "webhook": req.query.webhook_id
             }).toArray()
     
             return res.status(200).json(subscriptions)    
@@ -43,14 +44,21 @@ router.route('/')
             "webhook": req.body.webhook
         }, (err, result) => {
             if (err) return res.status(500).send("Error inserting subscription into database")
-            return res.status(200).json(result.insertedId)
+            return res.status(200).json({ _id: result.insertedId })
         })
     })
     .put((req, res) => {
-        res.status(200).send('PUT request to subscriptions')
+        res.status(403).send("PUT not implemented") // TODO Future
     })
     .delete((req, res) => {
-        res.status(200).send('DELETE request to subscriptions')
+        if (!ObjectId.isValid(req.query.id)) return res.status(400).send("Invalid Subscription ID")
+
+        arcoDb.collection("subscriptions").deleteOne({
+            "_id": new ObjectId(req.query.id)
+        }, (err, result) => {
+            if (err) return res.status(500).send("Error deleting subscription from database")
+            return res.status(200).send("Subscription deleted")
+        })
     })
 
 module.exports = router

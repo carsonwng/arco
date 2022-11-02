@@ -47,8 +47,7 @@ export const Router = () => {
 
     return (
         <div className={styles.container}>
-            <Routes locatrion={location}>
-                {/* <Route path="*" element={<div>asdpisaj</div>} /> */}
+            <Routes location={location}>
                 {routes.map((route, index) => (
                     <Route key={index} path={route.path} element={<route.element/>} />
                 ))}

@@ -12,7 +12,9 @@ export const NewSubscription = () => {
     const [condition, setCondition] = useState("Sender OR Receiver")
     const [target, setTarget] = useState("")
     const [customWebhook, setCustomWebhook] = useState(false)
+    const [customWebhookUrl, setCustomWebhookUrl] = useState("")
     const [error, setError] = useState("")
+    const [complete, setComplete] = useState(false)
 
     const handleChangeLogic = (e) => {
         setCondition(e.target.value)
@@ -85,7 +87,8 @@ export const NewSubscription = () => {
                     id: user.user.id
                 })
 
-    
+                const webhook = customWebhook ? customWebhookUrl : `http://147.182.152.192:3002/webhooks/${webhookId.data.webhook_id}`
+
                 await axios.post(`http://localhost:3001/subscriptions`, {
                     trigger: {
                         network: "algorand",
@@ -93,8 +96,10 @@ export const NewSubscription = () => {
                         condition_target: target,
                         condition: triggerCondition
                     },
-                    webhook: `http://147.182.152.192:3002/webhooks/${webhookId.data.webhook_id}`
+                    webhook: webhook
                 })
+
+                setComplete(true)
             } catch (err) {
                 console.error(err)
 
@@ -118,8 +123,6 @@ export const NewSubscription = () => {
 
                 <Select
                     id="select-1"
-                    // defaultValue="Sender OR Receiver"
-                    // id="select-1"
                     labelText=""
                     inline
                     
@@ -182,6 +185,9 @@ export const NewSubscription = () => {
                         placeholder="Enter Webhook URL"
 
                         labelText=""
+
+                        value={customWebhookUrl}
+                        onChange={e => setCustomWebhookUrl(e.target.value)}
                     />
                 </div>
             )}
@@ -195,6 +201,12 @@ export const NewSubscription = () => {
             {error && (
                 <div className={styles.label} style={{ marginTop: "16px" }}>
                     Error: {error}
+                </div>
+            )}
+
+            {complete && (
+                <div className={styles.label} style={{ marginTop: "16px" }}>
+                    Subscription Created!
                 </div>
             )}
         </Page>

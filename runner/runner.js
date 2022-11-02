@@ -77,9 +77,6 @@ connect(() => {
 
           i++
         }
-
-        // console.log("Algorand Block", block + ":", transactions.length)
-        // console.log()
       }
     })  
   })

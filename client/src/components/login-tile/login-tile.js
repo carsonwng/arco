@@ -4,7 +4,7 @@ import { motion } from "framer-motion"
 import styles from "./login-tile.module.scss"
 
 const discordID = "1030636486934134824"
-const redirectURI = "http%3A%2F%2Flocalhost%3A3000%2Flog-in"
+const redirectURI = "https%3A%2F%2Farco-three.vercel.app%2Flog-in"
 
 export const HeaderTile = ({
     label = "",
