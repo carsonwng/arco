@@ -4,7 +4,7 @@ Arco is a 3 part service that notifies you when a desired transaction is detecte
 Because of the way this project is structured, the backend API and runner are **isolated**, the only common resource being the MongoDB server that serves data to both consumers. This project is also extendable as it runs on webhooks to deliver information, any third-party app may create their own webhook and consumer logic to send notifications on another platform (telegram, slack, twitter, etc...), the provided [example](./example/discord/) is only one instance of how a developer may choose to use arco.
 
 Note: ./api, ./example/discord and ./runner are all hosted already. the client is *not* hosted. Follow the instructions in the "Running this Project" section to learn how to serve the frontend.
-Video: 
+Video: [Link](https://user-images.githubusercontent.com/115668052/199587825-35526276-90df-491e-93b6-1f0c6b6ab4ce.mp4)
 
 ![arco Flowchart](https://gateway.pinata.cloud/ipfs/QmWRorvKoTCk1VNxuG9FCPpe3PCrJ3msAmv2cdgVjs1J6B)
 
