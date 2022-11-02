@@ -41,7 +41,7 @@ connect(() => {
             targets.push(tx.receiver)
           }
 
-          const triggers = subscriptions.find(
+          const triggers = await subscriptions.find(
             {
               "trigger.condition_target": {
                 $in: targets
@@ -56,7 +56,7 @@ connect(() => {
                 }
               ]
             }
-          )
+          ).toArray()
 
           if (!triggers) return
 

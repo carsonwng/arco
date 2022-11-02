@@ -3,6 +3,9 @@ Arco is a 3 part service that notifies you when a desired transaction is detecte
 
 Because of the way this project is structured, the backend API and runner are **isolated**, the only common resource being the MongoDB server that serves data to both consumers. This project is also extendable as it runs on webhooks to deliver information, any third-party app may create their own webhook and consumer logic to send notifications on another platform (telegram, slack, twitter, etc...), the provided [example](./example/discord/) is only one instance of how a developer may choose to use arco.
 
+Note: ./api, ./example/discord and ./runner are all hosted already. the client is *not* hosted. Follow the instructions in the "Running this Project" section to learn how to serve the frontend.
+Video: 
+
 ![arco Flowchart](https://gateway.pinata.cloud/ipfs/QmWRorvKoTCk1VNxuG9FCPpe3PCrJ3msAmv2cdgVjs1J6B)
 
 # Running this project
@@ -12,13 +15,19 @@ Because of the way this project is structured, the backend API and runner are **
 - A MongoDB server
 
 ### Running
-1. ```cd``` into each project root (runner, client, api, example/discord)
-2. Replace all the ```sample.env``` files found in runner, example/discord, and api
-3. Replace your discord client ID with that found in the "login-tile" component in the client app. Replace the redirect URI as well, to "http%3A%2F%2Flocalhost%3A3000%2Flog-in" if running locally
-4. Replace any instance of "147.182.152.192" with "localhost" if running locally
-5. Run ```yarn```, then ```yarn dev``` in the current directory (with the exception of client, you may only ```yarn start``` there)
-6. Enjoy!
-
+- All services:
+  1. ```cd``` into each project root (runner, client, api, example/discord)
+  2. Replace all the ```sample.env``` files found in runner, example/discord, and api
+  3. Replace your discord client ID with that found in the "login-tile" component in the client app
+  4. Replace any instance of "147.182.152.192" with "localhost" if running all services locally
+  5. Run ```yarn```, then ```yarn dev``` in the current directory (with the exception of client, you may only ```yarn start``` there)
+  6. Enjoy!
+   
+- Client only:
+  1. ```cd``` into client
+  2. ```yarn``` to install dependencies
+  3. ```yarn start``` to run the frontend
+  4. Visit it at [http://localhost:3000](http://localhost:3000)
 
 # Limitations & Next Steps
 ### ./client
@@ -39,6 +48,7 @@ Because of the way this project is structured, the backend API and runner are **
 ### ./example/discord
 - Lack of comments, README as it is the only standing resource on how to consume the webhook calls coming from arco's runner
 - High volume of DMs may result in rate-limits on the bot, another solution not involving private messages should be implemented
+- Any user that makes a subscription to the discord consumer MUST be in the arco discord server as users are not discoverable to bots without having a common guild. Join [here](https://discord.gg/RT9xFJvAfZ)
 
 # API Reference / MongoDB Document Examples
 ### API Reference

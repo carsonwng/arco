@@ -25,6 +25,16 @@ export const Dashboard = () => {
             </ClickableTile> */}
             <div className={styles.tile__container}>
                 <HeaderTile
+                    label={"Join the"}
+                    title={"Discord Server"}
+                    href={"https://discord.gg/RT9xFJvAfZ"}
+                    description={"To receive notifications, you must be in our server, click to join!"}
+                    icon
+                    buttonLabel={"Join"}
+                    className={styles.tile}
+                />
+
+                <HeaderTile
                     label={"Edit your"}
                     title={"Subscriptions"}
                     description={"Edit your existing subscriptions."}

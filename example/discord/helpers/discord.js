@@ -32,7 +32,7 @@ module.exports = {
             new ButtonBuilder()
                 .setLabel('Manage Subscriptions')
                 .setStyle('Link')
-                .setURL('https://arco-three.vercel.app/')
+                .setURL('http://localhost:3000/dashboard')
         )
 
         return row

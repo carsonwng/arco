@@ -6,9 +6,12 @@ const { ObjectId } = require('mongodb')
 
 const { push } = require("../helpers/push")
 
+let arcoDb;
+
 router.use(express.json())
 
 router.use((req, res, next) => {
+    arcoDb = arco.getDb()
     next()
 })
 
