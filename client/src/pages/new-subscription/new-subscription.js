@@ -83,13 +83,13 @@ export const NewSubscription = () => {
             }
 
             try {
-                const webhookId = await axios.post("http://localhost:3002/id", {
+                const webhookId = await axios.post("http://147.182.152.192:3002/id", {
                     id: user.user.id
                 })
 
                 const webhook = customWebhook ? customWebhookUrl : `http://147.182.152.192:3002/webhooks/${webhookId.data.webhook_id}`
 
-                await axios.post(`http://localhost:3001/subscriptions`, {
+                await axios.post(`http://147.182.152.192:3001/subscriptions`, {
                     trigger: {
                         network: "algorand",
                         condition_type: "address",
