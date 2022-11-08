@@ -83,7 +83,7 @@ export const ArcoHeader = () => {
                             title="This Project"
                             description="Everything about arco. Why, how, and more."
                             buttonLabel="Learn More"
-                            href={`#`}
+                            href={`https://github.com/carsonwng/arco`}
                             icon
                         />
                     
