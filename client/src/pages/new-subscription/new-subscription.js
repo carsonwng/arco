@@ -29,82 +29,80 @@ export const NewSubscription = () => {
     }
 
     const handleSubmit = async () => {
-        if (!customWebhook) {
-            let triggerCondition;
+        let triggerCondition;
 
-            switch(condition) {
-                case "Sender OR Receiver":
-                    triggerCondition = {
-                        "or": [
-                            {
-                                "==": [
-                                    {
-                                        "var": "sender"
-                                    },
-                                    target
-                                ]
-                            },
-                            {
-                                "==": [
-                                    {
-                                        "var": "receiver"
-                                    },
-                                    target
-                                ]
-                            }
-                        ]
-                    }
-                
-                    break
-                case "Sender":
-                    triggerCondition = {
-                        "==": [
-                            {
-                                "var": "sender"
-                            },
-                            target
-                        ]
-                    }
+        switch(condition) {
+            case "Sender OR Receiver":
+                triggerCondition = {
+                    "or": [
+                        {
+                            "==": [
+                                {
+                                    "var": "sender"
+                                },
+                                target
+                            ]
+                        },
+                        {
+                            "==": [
+                                {
+                                    "var": "receiver"
+                                },
+                                target
+                            ]
+                        }
+                    ]
+                }
+            
+                break
+            case "Sender":
+                triggerCondition = {
+                    "==": [
+                        {
+                            "var": "sender"
+                        },
+                        target
+                    ]
+                }
 
-                    break
-                case "Receiver":
-                    triggerCondition = {
-                        "==": [
-                            {
-                                "var": "receiver"
-                            },
-                            target
-                        ]
-                    }
+                break
+            case "Receiver":
+                triggerCondition = {
+                    "==": [
+                        {
+                            "var": "receiver"
+                        },
+                        target
+                    ]
+                }
 
-                    break
-                default:
-                    break
-            }
+                break
+            default:
+                break
+        }
 
-            try {
-                const webhookId = await axios.post("http://147.182.152.192:3002/id", {
-                    id: user.user.id
-                })
+        try {
+            const webhookId = await axios.post("http://147.182.152.192:3002/id", {
+                id: user.user.id
+            })
 
-                const webhook = customWebhook ? customWebhookUrl : `http://147.182.152.192:3002/webhooks/${webhookId.data.webhook_id}`
+            const webhook = customWebhook ? customWebhookUrl : `http://147.182.152.192:3002/webhooks/${webhookId.data.webhook_id}`
 
-                await axios.post(`http://147.182.152.192:3001/subscriptions`, {
-                    trigger: {
-                        network: "algorand",
-                        condition_type: "address",
-                        condition_target: target,
-                        condition: triggerCondition
-                    },
-                    webhook: webhook
-                })
+            await axios.post(`http://147.182.152.192:3001/subscriptions`, {
+                trigger: {
+                    network: "algorand",
+                    condition_type: "address",
+                    condition_target: target,
+                    condition: triggerCondition
+                },
+                webhook: webhook
+            })
 
-                setComplete(true)
-            } catch (err) {
-                console.error(err)
+            setComplete(true)
+        } catch (err) {
+            console.error(err)
 
-                setError(err.message)
-            }
+            setError(err.message)
         }
     }
 
